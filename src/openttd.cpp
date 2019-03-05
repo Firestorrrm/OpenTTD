@@ -1079,6 +1079,15 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
+			if (_game_mode == GM_EDITOR && _file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+				SwitchToMode(_switch_mode);
+			} else if (_file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP;
+				SwitchToMode(_switch_mode);
+			}
+			break;
+
 		case SM_NEWGAME: // New Game --> 'Random game'
 			if (_network_server) {
 				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "Random Map");
