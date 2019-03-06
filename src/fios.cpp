@@ -497,7 +497,7 @@ void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
+FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -546,7 +546,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
+FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
